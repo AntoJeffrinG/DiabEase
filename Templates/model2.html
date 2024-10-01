@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insulin Dosage Recommendation</title>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Link to your main CSS file -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+        </ul>
+    </nav>
+
+    <!-- Insulin Dosage Section -->
+    <section class="insulin-dosage-section">
+        <div class="content">
+            <h1 class="heading">Insulin Dosage Recommendation</h1>
+            <form action="/insulin" method="post" class="form-style">
+                <div class="input-group">
+                    <label for="blood_sugar">Blood Sugar Level:</label>
+                    <input type="text" id="blood_sugar" name="blood_sugar" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label for="insulin_type">Insulin Type:</label>
+                    <select id="insulin_type" name="insulin_type" required>
+                        <option value="" disabled selected>Select Insulin Type</option>
+                        <option value="Rapid-Acting">Rapid-Acting</option>
+                        <option value="Short-Acting">Short-Acting</option>
+                        <option value="Intermediate-Acting">Intermediate-Acting</option>
+                        <option value="Long-Acting">Long-Acting</option>
+                        <option value="Pre-Mixed">Pre-Mixed</option>
+                    </select>
+                </div>
+                <input type="submit" value="Get Dosage" class="button colorful-hover">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

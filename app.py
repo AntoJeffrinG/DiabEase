@@ -4,7 +4,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
 
 app = Flask(__name__)
 
@@ -52,6 +51,18 @@ model.fit(X_train, y_train)
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/model1')
+def model1():
+    return render_template('model1.html')
+
+@app.route('/model2')
+def model2():
+    return render_template('model2.html')
 
 @app.route('/nutrition', methods=['POST'])
 def nutrition():
