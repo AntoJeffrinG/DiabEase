@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Recommendations</title>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+        </ul>
+    </nav>
+
+    <section class="model">
+        <div class="content">
+            <h1>Nutrition Recommendation</h1>
+            <form action="/nutrition" method="post">
+                <label for="blood_sugar">Blood Sugar Level:</label>
+                <input type="text" name="blood_sugar" id="blood_sugar" required autocomplete="off"><br>
+
+                <label for="nutrition_type">Dietary Preference:</label>
+                <select name="nutrition_type" id="nutrition_type" required>
+                    <option value="" disabled selected>Select your preference</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="Low-Carb">Low-Carb</option>
+                    <option value="Keto">Keto</option>
+                    <option value="Paleo">Paleo</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="DASH">DASH</option>
+                </select><br>
+
+                <input type="submit" class="button colorful-hover" value="Get Recommendation">
+            </form>
+        </div>
+    </section>
+</body>
+</html>
