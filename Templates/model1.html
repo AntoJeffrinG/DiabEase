@@ -3,45 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insulin Recommendation</title>
+    <title>Dietary Suggestion</title>
     <link rel="icon" href="/static/images/logo.png" type="image/png">
     <link rel="stylesheet" href="/static/css/styles.css"> <!-- Link to your main CSS file -->
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/services">Services</a></li>
-        </ul>
-    </nav>
-
-    <!-- Insulin Dosage Section -->
-    <section class="insulin-dosage-section">
+    <section class="nutrition-result-section">
         <div class="content">
-            <h1 class="heading">Insulin Recommendation</h1>
-            <form action="/insulin" method="post" class="form-style">
-                <div class="input-group">
-                    <label for="blood_sugar">Blood Sugar Level(mg/dL):</label>
-                    <input type="text" id="blood_sugar" name="blood_sugar" autocomplete="off" placeholder="Enter Blood Suger Level">
+            <h1>Nutrition Recommendation</h1>
+            {% if result != "No suitable diet found." %}
+                <div class="nutrition-info">
+                    <p><strong>Daily Carbohydrates (g):</strong> {{ result["Daily Carbohydrates (g)"] }}</p>
+                    <p><strong>Daily Calories (kcal):</strong> {{ result["Daily Calories (kcal)"] }}</p>
+                    <p><strong>Suggested Food Items:</strong> {{ result["Suggested Food Items"] }}</p>
+                    <p><strong>Carbohydrates per Serving (g):</strong> {{ result["Carbohydrates per Serving (g)"] }}</p>
+                    <p><strong>Calories per Serving (kcal):</strong> {{ result["Calories per Serving (kcal)"] }}</p>
                 </div>
-                <div class="input-group">
-                    <label for="dob">Enter Your Age</label>
-                    <input type="text" id="dob" name="dob" autocomplete="off" placeholder="Enter Your Age">
-                </div>
-                <div class="input-group">
-                    <label for="insulin_type">Insulin Type:</label>
-                    <select id="insulin_type" name="insulin_type" required>
-                        <option value="" disabled selected>Select Insulin Type</option>
-                        <option value="Rapid-acting">Rapid-acting</option>
-                        <option value="Short-acting">Short-acting</option>
-                        <option value="Intermediate-acting">Intermediate-acting</option>
-                        <option value="Long-acting">Long-acting</option>
-                        <option value="Pre-Mixed">Pre-Mixed</option>
-                    </select>
-                </div>
-                <input type="submit" value="Get Dosage" class="button colorful-hover">
-            </form>
+            {% else %}
+                <p>{{ result }}</p>
+            {% endif %}
+            <a href="/model1" class="button colorful-hover">Go back</a>
         </div>
     </section>
 </body>
