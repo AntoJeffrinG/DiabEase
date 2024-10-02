@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.linear_model import LinearRegression
+from twilio.rest import Client
 
 app = Flask(__name__)
 
@@ -48,6 +49,28 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = LinearRegression()
 model.fit(X_train, y_train)
 
+# Twilio account credentials
+account_sid = 'AC1b5e6188bcd73beaec18333df0f4cc1c'  # Replace with your Twilio Account SID
+auth_token = '37dc020e293aa82a5dd8a3a896611f33'    # Replace with your Twilio Auth Token
+twilio_phone_number = '+13522928291'  # Replace with your Twilio Phone Number
+
+# Function to send SMS alert
+def send_sms_alert(name, sugar_level, phone_number):
+    client = Client(account_sid, auth_token)
+
+    message_body = (f"Alert: {name}, your blood sugar level is {sugar_level} mg/dL, "
+                    "which is out of your specified range. Please take action.")
+
+    try:
+        message = client.messages.create(
+            body=message_body,
+            from_=twilio_phone_number,
+            to=phone_number
+        )
+        print(f"Alert sent to {phone_number}. Message SID: {message.sid}")
+    except Exception as e:
+        print(f"Error sending SMS: {e}")
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -82,6 +105,30 @@ def insulin():
     predicted_dosage = model.predict(new_input_final)
     predicted_dosage_rounded = round(predicted_dosage[0], 2)
     return render_template('insulin.html', result=predicted_dosage_rounded)
+
+# New Route for Blood Sugar Alert System
+@app.route('/blood_sugar_alert')
+def blood_sugar_alert_form():
+    return render_template('blood_sugar_alert.html')
+
+@app.route('/send_alert', methods=['POST'])
+def send_alert():
+    name = request.form['name']
+    phone_number = request.form['phone_number']
+    low_range = int(request.form['low_range'])
+    high_range = int(request.form['high_range'])
+    current_sugar_level = int(request.form['current_sugar_level'])
+
+    if not phone_number.startswith('+'):
+        phone_number = '+91' + phone_number  # Default to Indian number
+
+    if current_sugar_level < low_range or current_sugar_level > high_range:
+        send_sms_alert(name, current_sugar_level, phone_number)
+        message = "Blood sugar level is out of range. An alert SMS has been sent!"
+    else:
+        message = f"Blood sugar level is within the normal range ({low_range}-{high_range} mg/dL)."
+
+    return render_template('blood_sugar_result.html', message=message)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,300 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Navigation Bar Styling */
+nav {
+    background: transparent; /* Fully transparent background */
+    padding: 15px 0;
+    box-shadow: none;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #623baf;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Styling */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    padding: 50px;
+    text-align: center;
+    position: relative; /* Ensures background covers section */
+}
+
+/* Index Page (Home) */
+.home {
+    background-image: url('/static/images/Home.jpg'); /* Background image for the index page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: fixed; /* Fallback color */
+    color: #fff;
+}
+
+/* Services Page */
+.model {
+    background-image: url('/static/images/ser.jpg'); /* Ensure this path is correct */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* No repeat */
+    background-attachment: fixed; /* Fixed attachment */
+    color: #fff;
+}
+
+/* First Model Page */
+.model1 {
+    background-image: url('/static/images/diet.jpg'); /* Background image for the first model page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+
+/* Second Model Page */
+.insulin-dosage-section {
+    background-image: url('/static/images/insulin.jpg'); /* Background image for the second model page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+
+.blood-sugar-alert-section {
+    background-image: url('/static/images/alert.png'); /* Background image for the first model page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+.nutrition-result-section {
+    background-image: url('/static/images/output.jpg'); /* Background image for the first model page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+.insulin-dosage-result-section {
+    background-image: url('/static/images/output.jpg'); /* Background image for the first model page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+.insulin-dosage-result-section {
+    background-image: url('/static/images/output.jpg'); /* Background image for the first model page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+/* Content Box Styling */
+.content {
+    max-width: 800px;
+    background: rgba(46, 44, 44, 0.504);
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-10px);
+}
+
+/* Typography */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #623baf;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    color: #d4d4d4;
+}
+
+/* Button Styling */
+.button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #623baf;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.colorful-hover:hover {
+    background-color: #ff6f61;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 111, 97, 0.8);
+}
+
+/* Model Box Styling */
+.model-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.model-box {
+    background-color: rgba(46, 44, 44, 0.504);
+    color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    width: 350px;
+    height: 250px;
+    text-align: center;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.model-box:hover {
+    background-color: #623baf;
+    transform: translateY(-10px);
+}
+
+.model-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.model-box p {
+    font-size: 1rem;
+}
+
+/* Input and Label Styling */
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #d4d4d4;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #a991d8;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Dropdown Styling */
+select {
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #a991d8;
+    border-radius: 4px;
+    margin: 10px 0;
+    color: #fff;
+    width: 80%;
+}
+
+select:focus {
+    background-color: #2220209c; /* Black background when dropdown is clicked */
+    color: #fff; /* White text */
+}
+
+select option {
+    background-color: rgba(255, 255, 255, 0.1); /* Black background for options */
+    color: #fff; /* White text for options */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    border-top: 1px solid #a991d8;
+}
+
+/* General input styling (for consistency) */
+.form-control {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #a991d8;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+    color: #fff;
+    font-size: 1rem;
+}
+
+/* Large input field for current blood sugar level */
+.large-input {
+    width: 100%; /* Full width for the larger size */
+    font-size: 1.2rem; /* Slightly larger font size */
+    padding: 15px; /* Increased padding for better appearance */
+}
+
+/* Remove arrows (spinners) from number input fields */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
