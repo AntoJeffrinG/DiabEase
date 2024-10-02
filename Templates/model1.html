@@ -3,26 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dietary Suggestion</title>
+    <title>Services</title>
     <link rel="icon" href="/static/images/logo.png" type="image/png">
-    <link rel="stylesheet" href="/static/css/styles.css"> <!-- Link to your main CSS file -->
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <section class="nutrition-result-section">
-        <div class="content">
-            <h1>Nutrition Recommendation</h1>
-            {% if result != "No suitable diet found." %}
-                <div class="nutrition-info">
-                    <p><strong>Daily Carbohydrates (g):</strong> {{ result["Daily Carbohydrates (g)"] }}</p>
-                    <p><strong>Daily Calories (kcal):</strong> {{ result["Daily Calories (kcal)"] }}</p>
-                    <p><strong>Suggested Food Items:</strong> {{ result["Suggested Food Items"] }}</p>
-                    <p><strong>Carbohydrates per Serving (g):</strong> {{ result["Carbohydrates per Serving (g)"] }}</p>
-                    <p><strong>Calories per Serving (kcal):</strong> {{ result["Calories per Serving (kcal)"] }}</p>
-                </div>
-            {% else %}
-                <p>{{ result }}</p>
-            {% endif %}
-            <a href="/model1" class="button colorful-hover">Go back</a>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+        </ul>
+    </nav>
+
+    <!-- Model Section (Two Boxes) -->
+    <section class="model">
+        <div class="model-container">
+            <!-- Model 1 Box -->
+            <div class="model-box" onclick="window.location.href='/model1'">
+                <h2>Dietary Suggestion</h2>
+                <p>Get Diatary Suggestion tailored to your blood sugar levels, helping you manage glucose levels and maintain a balanced diet.</p>
+            </div>
+
+            <!-- Model 2 Box -->
+            <div class="model-box" onclick="window.location.href='/model2'">
+                <h2>Insulin Suggestion</h2>
+                <p>Get insulin dosage suggestion based on your current blood sugar level, helping you maintain optimal glucose control and better manage diabetes.</p>
+            </div>
+            <div class="model-box" onclick="window.location.href='/blood_sugar_alert'">
+                <h2>Gluco Alert</h2>
+                <p>Get an alert when your blood sugar level falls out of the normal range, ensuring timely action to maintain your health and well-being!</p>
+            </div>
         </div>
     </section>
 </body>
