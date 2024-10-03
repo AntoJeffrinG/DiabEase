@@ -6,6 +6,18 @@
     <title>Insulin Recommendation</title>
     <link rel="icon" href="/static/images/logo.png" type="image/png">
     <link rel="stylesheet" href="/static/css/styles.css"> <!-- Link to your main CSS file -->
+    <style>
+        /* Advisory text styling */
+        .advice-text {
+            text-align: center;
+            font-size: 10px;
+            color: #fff; /* White text for visibility */
+            padding-top: 10px;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <section class="insulin-dosage-result-section">
@@ -14,6 +26,9 @@
             <p class="dosage-result">Suggested Insulin Dosage: <span>{{ result }}</span> units</p>
             <a href="/model2" class="button colorful-hover">Go Back</a>
         </div>
+
+        <!-- Positioned over the background, at the bottom -->
+        <p class="advice-text">It is advisable to consult a healthcare provider or pharmacist before using DiabEase for personalized guidance.</p>
     </section>
 </body>
 </html>
