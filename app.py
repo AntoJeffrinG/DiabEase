@@ -12,9 +12,9 @@ import re
 app = Flask(__name__)
 
 # Load environment variables for sensitive information
-account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-twilio_phone_number = os.getenv('TWILIO_PHONE_NUMBER')
+account_sid = 'AC1b5e6188bcd73beaec18333df0f4cc1c'
+auth_token = '37dc020e293aa82a5dd8a3a896611f33'
+twilio_phone_number = '+13522928291'
 
 # Nutrition Recommendation Logic
 df_nutrition = pd.read_csv('nutrition_recommendations_based_on_blood_sugar.csv')
