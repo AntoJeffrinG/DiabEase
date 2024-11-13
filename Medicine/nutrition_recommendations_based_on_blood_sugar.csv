@@ -1,0 +1,19 @@
+Interval (mg/dL),Nutrition Type,Daily Carbohydrates (g),Daily Calories (kcal),Food Items,Carbohydrates per serving (g),Calories per serving (kcal)
+40-70,Vegan,50-150,1500-1800,"Orange juice, Dates, Banana",25,110
+40-70,Non-Vegan,50-150,1500-1800,"Honey, Low-fat yogurt, Tuna",18,70
+71-100,Vegan,150-200,1800-2200,"Oatmeal, Brown rice, Sweet potato",28,130
+71-100,Non-Vegan,150-200,1800-2200,"Greek yogurt, Chicken breast, Beef stew",22,120
+101-140,Vegan,130-180,2000-2400,"Mixed nuts, Tofu, Spinach",5,30
+101-140,Non-Vegan,130-180,2000-2400,"Chicken breast, Tuna steak, Roast chicken",0,150
+141-170,Vegan,120-150,1800-2200,"Cucumber, Zucchini, Green beans",4,45
+141-170,Non-Vegan,120-150,1800-2200,"Grilled chicken, Lean beef, Cottage cheese",0,160
+171-200,Vegan,120-150,1600-2000,"Brussels sprouts, Artichokes, Mushrooms",6,60
+171-200,Non-Vegan,120-150,1600-2000,"Turkey slices, Lamb chops, Pork loin",2,100
+201-250,Vegan,100-130,1600-2000,"Spinach salad, Mixed nuts, Olive oil",7,100
+201-250,Non-Vegan,100-130,1600-2000,"Turkey slices, Lean beef, Grilled shrimp",2,120
+251-300,Vegan,100-130,1600-2000,"Zucchini noodles, Green salad, Stir-fried tofu",0,25
+251-300,Non-Vegan,100-130,1600-2000,"Grilled shrimp, Chicken broth, Boiled eggs",0,10
+301-400,Vegan,100-130,1600-2000,"Celery sticks, Lettuce wraps, Almonds",2,25
+301-400,Non-Vegan,100-130,1600-2000,"Beef steak, Turkey burger, Boiled eggs",0,80
+401-600,Vegan,100-130,1600-2000,"Steamed vegetables, Mixed nuts, Olive oil",7,25
+401-600,Non-Vegan,100-130,1600-2000,"Steamed fish, Grilled chicken breast, Low-fat yogurt",2,80
