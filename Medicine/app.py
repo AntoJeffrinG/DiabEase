@@ -9,9 +9,7 @@ import os
 import joblib
 import re
 
-app = Flask(__name__,
-            static_folder='htdocs/Static',
-            template_folder='htdocs/Templates')
+app = Flask(__name__)
 
 # Load environment variables for sensitive information
 account_sid = 'AC1b5e6188bcd73beaec18333df0f4cc1c'
