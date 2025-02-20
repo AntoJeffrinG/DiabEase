@@ -1,8 +1,8 @@
-##🩺 DiabEase: Personalized Diabetes Management System
+🩺 DiabEase: Personalized Diabetes Management System
 
-#📌 Project Overview
+📌 Project Overview
 
-#DiabEase is an intelligent diabetes management system designed to provide:
+DiabEase is an intelligent diabetes management system designed to provide:
 
 📊 Personalized insulin dosage prediction based on patient data.
 
@@ -12,24 +12,26 @@
 
 🌐 A user-friendly web interface for seamless interaction and monitoring.
 
-##🏗️ Tech Stack
+🏗️ Tech Stack
 
-#Backend:
+Backend:
 
 🐍 Flask (Python) - Server-side logic and API development.
-
 🤖 Machine Learning (ML) - For predictive insulin dosage.
-
 📡 Twilio API - To send real-time alerts and notifications.
 
-#Frontend:
+Frontend:
 
 🎨 HTML, CSS, JavaScript - For an intuitive and responsive user experience.
 
-##✨ Key Features
+✨ Key Features
 
 ✅ Personalized Insulin Dosage Prediction - Uses ML models to predict the required insulin dosage based on real-time patient data.
+
 ✅ Real-time Alerts & Notifications - Notifies users about critical blood sugar levels via Twilio.
+
 ✅ Dietary Recommendations - Provides meal suggestions to maintain balanced glucose levels.
+
 ✅ User-friendly Web Interface - Simple and accessible UI for seamless interaction.
+
 ✅ Secure & Scalable - Built with Flask for reliability and ease of expansion.
