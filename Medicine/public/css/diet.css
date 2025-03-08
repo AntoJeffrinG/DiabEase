@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(../images/diet.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+nav {
+    background: transparent;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: #623baf;
+    transform: scale(1.1);
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.btn {
+    background-color: #eee;
+    border: none;
+    padding: 1rem;
+    margin-top: 33rem;
+    font-size: 1rem;
+    width: 15em;
+    font-size: 20px;
+    margin-left: 23rem;
+    border-radius: 1rem;
+    color: #623baf;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+.btn:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+}
+
+.btn:hover:not(:disabled) {
+    background: #623baf;
+    color: white;
+    text-shadow: 0 0.1rem #bcb4b4;
+}
+
+.btn:disabled {
+    cursor: auto;
+    color: #623baf;
+}
