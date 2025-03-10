@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community - Diabetes Project</title>
+  <link rel="stylesheet" href="community.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Diabetes Community - Share Your Experience</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Community Message Board -->
+  <main>
+    <section id="message-board">
+      <h2>Community Messages</h2>
+      <textarea id="message-input" placeholder="Share your experience..." rows="4"></textarea>
+      <button onclick="postMessage()">Post Message</button>
+      <div id="messages-container"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact us at support@diabetescommunity.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
