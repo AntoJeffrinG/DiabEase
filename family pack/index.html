@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Pack - Diabetes Tracker</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Family Pack - Diabetes Tracker</h1>
+        
+        <div class="family-selector">
+            <label for="familyMembers">Select Family Member:</label>
+            <select id="familyMembers" onchange="updateData()">
+                <option value="Alice">Alice (Mother)</option>
+                <option value="Bob">Bob (Father)</option>
+                <option value="Charlie">Charlie (Son)</option>
+            </select>
+        </div>
+        
+        <div class="data-display">
+            <h2 id="memberName">Alice's Data</h2>
+            <p><strong>Blood Sugar:</strong> <span id="bloodSugar">150</span> mg/dL</p>
+            <p><strong>Insulin Usage:</strong> <span id="insulin">25</span> units</p>
+            <p><strong>Exercise:</strong> <span id="exercise">30</span> mins</p>
+            <p><strong>Food Intake:</strong> <span id="food">45</span> carbs</p>
+        </div>
+
+        <div class="add-member">
+            <h3>Add Family Member</h3>
+            <input type="text" id="newMemberName" placeholder="Enter name">
+            <input type="text" id="newMemberRole" placeholder="Enter role (e.g., Brother)">
+            <button onclick="addFamilyMember()">Add</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
