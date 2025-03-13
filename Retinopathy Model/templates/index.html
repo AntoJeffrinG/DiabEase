@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetic Retinopathy Detection</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        #video-box {
+            width: 640px;
+            height: 480px;
+            border: 2px solid black;
+            display: none;
+            object-fit: cover; /* This will ensure the video doesn't appear stretched */
+        }
+        #prediction {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diabetic Retinopathy Detection</h1>
+    <button id="start-btn">Start</button>
+    <button id="stop-btn" style="display: none;">Stop</button>
+    <br><br>
+    <img id="video-box" src="" alt="Camera Feed">
+    <div id="prediction">Prediction: --</div>
+
+    <script>
+        let videoBox = document.getElementById("video-box");
+        let startBtn = document.getElementById("start-btn");
+        let stopBtn = document.getElementById("stop-btn");
+        let predictionDiv = document.getElementById("prediction");
+        let intervalId;
+
+        // Function to update prediction every 500ms
+        function updatePrediction() {
+            fetch('/get_prediction')
+                .then(response => response.json())
+                .then(data => {
+                    predictionDiv.innerText = 'Prediction: ' + data.prediction;
+                });
+        }
+        startBtn.addEventListener("click", function () {
+            // Start the video feed by changing the image source
+            videoBox.src = "/video_feed";  // This should point to the video feed endpoint
+            videoBox.style.display = "block";
+            startBtn.style.display = "none";
+            stopBtn.style.display = "inline-block";
+        
+            // Update prediction every 500ms
+            intervalId = setInterval(updatePrediction, 500);
+        });
+        stopBtn.addEventListener("click", function () {
+            // Hide the video feed and show the start button
+            videoBox.style.display = "none";
+            startBtn.style.display = "inline-block";
+            stopBtn.style.display = "none";
+
+            // Stop the video feed and prediction updates
+            clearInterval(intervalId);
+            predictionDiv.innerText = "Prediction: --";
+
+            // Stop video feed on the backend
+            fetch('/stop_video_feed')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.status);
+                });
+        });
+    </script>
+</body>
+</html>
