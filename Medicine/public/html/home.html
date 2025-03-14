@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiabEase</title>
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/public/html/home.html">Home</a></li>
+            <li><a href="/public/html/services.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <section class="home">
+        <div class="content">
+            <h1>Welcome to DiabEase</h1>
+            <h2>Your Diabetes Health Assistant</h2>
+            <p>DiabEase is your Health superhero!</p>
+            <button class="button" style="--clr: #7808d0" onclick="location.href='services.html'">
+                <span class="button__icon-wrapper">
+                    <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg"
+                        width="10">
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"></path>
+                    </svg>
+
+                    <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg"
+                        class="button__icon-svg button__icon-svg--copy">
+                        <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"></path>
+                    </svg>
+                </span>
+                Explore All
+            </button>
+        </div>
+    </section>
+
+    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+            style="width: 85%; height: 85%; object-fit: contain;"></div>
+    <div id="mediGenieBubble">MediGenie</div>
+
+    <div id="chatContainer">
+        <div class="chat-header">
+            <span>Chat with MediBot</span>
+            <div class="chat-controls">
+                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                        height="20"></button>
+                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                        height="20"></button>
+            </div>
+        </div>
+        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+    </div>
+
+    <script>
+        const bubbleIcon = document.getElementById('chatbotBubble');
+        const chatContainer = document.getElementById('chatContainer');
+        const minimizeBtn = document.getElementById('minimizeBtn');
+        const maximizeBtn = document.getElementById('maximizeBtn');
+
+        bubbleIcon.addEventListener('click', () => {
+            chatContainer.classList.toggle('visible');
+        });
+
+        minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('visible');
+        });
+
+        maximizeBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('maximized');
+        });
+    </script>
+</body>
+
+</html>

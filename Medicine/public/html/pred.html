@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicted Values</title>
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/pred.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Predicted Values</h2>
+        <div class="insights" id="insights"></div>
+        <button class="btn" onclick="window.history.back()">Back to Graph</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const insights = `
+                <p>Predicted Blood Sugar: 155 mg/dL</p>
+                <p>Predicted Insulin Usage: 28 units</p>
+                <p>Predicted Exercise: 35 minutes</p>
+                <p>Predicted Food Intake: 50 calories</p>
+                <p><strong>Suggestions:</strong></p>
+                <ul>
+                    <li>Adjust insulin to maintain stable blood sugar.</li>
+                    <li>Exercise for better glucose control.</li>
+                </ul>
+            `;
+            document.getElementById('insights').innerHTML = insights;
+        });
+    </script>
+
+</body>
+
+</html>
