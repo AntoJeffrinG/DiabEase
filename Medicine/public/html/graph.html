@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Data Insights</title>
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/graph.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="/public/html/home.html">Home</a></li>
+            <li><a href="/public/html/services.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Diabetes Data Visualization</h2>
+        <div class="results" id="results"></div>
+        <canvas id="chart"></canvas>
+        <div class="insights" id="insights"></div>
+        <div class="button-container">
+            <button class="btn" id="predict-button">View Predicted Values</button>
+        </div>
+    </div>
+
+    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+            style="width: 85%; height: 85%; object-fit: contain;"></div>
+    <div id="mediGenieBubble">MediGenie</div>
+
+    <div id="chatContainer">
+        <div class="chat-header">
+            <span>Chat with MediBot</span>
+            <div class="chat-controls">
+                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                        height="20"></button>
+                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                        height="20"></button>
+            </div>
+        </div>
+        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const data = [
+                { Day: "Monday", BloodSugar: 150, InsulinUsage: 25, Exercise: 30, FoodIntake: 45 },
+                { Day: "Tuesday", BloodSugar: 160, InsulinUsage: 30, Exercise: 40, FoodIntake: 50 },
+                { Day: "Wednesday", BloodSugar: 155, InsulinUsage: 28, Exercise: 35, FoodIntake: 48 },
+                { Day: "Thursday", BloodSugar: 150, InsulinUsage: 26, Exercise: 37, FoodIntake: 47 },
+                { Day: "Friday", BloodSugar: 158, InsulinUsage: 29, Exercise: 40, FoodIntake: 52 },
+                { Day: "Saturday", BloodSugar: 165, InsulinUsage: 32, Exercise: 45, FoodIntake: 55 },
+                { Day: "Sunday", BloodSugar: 170, InsulinUsage: 33, Exercise: 50, FoodIntake: 60 }
+            ];
+
+            visualizeData(data);
+
+            document.getElementById('predict-button').addEventListener('click', function () {
+                window.location.href = 'pred.html';
+            });
+
+            function visualizeData(data) {
+                const labels = data.map(entry => entry.Day);
+                const bloodSugar = data.map(entry => entry.BloodSugar);
+                const insulinUsage = data.map(entry => entry.InsulinUsage);
+                const exercise = data.map(entry => entry.Exercise);
+                const foodIntake = data.map(entry => entry.FoodIntake);
+
+                const ctx = document.getElementById('chart').getContext('2d');
+                const chartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            { label: 'Blood Sugar', data: bloodSugar, borderColor: 'rgba(255, 99, 132, 1)', fill: false },
+                            { label: 'Insulin Usage', data: insulinUsage, borderColor: 'rgba(54, 162, 235, 1)', fill: false },
+                            { label: 'Exercise', data: exercise, borderColor: 'rgba(75, 192, 192, 1)', fill: false },
+                            { label: 'Food Intake', data: foodIntake, borderColor: 'rgba(153, 102, 255, 1)', fill: false }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'top' },
+                            tooltip: { mode: 'index', intersect: false }
+                        },
+                        interaction: { mode: 'index', intersect: false },
+                        scales: {
+                            x: { display: true, title: { display: true, text: 'Day' } },
+                            y: { display: true, title: { display: true, text: 'Value' } }
+                        }
+                    }
+                });
+            }
+        });
+
+        const bubbleIcon = document.getElementById('chatbotBubble');
+        const chatContainer = document.getElementById('chatContainer');
+        const minimizeBtn = document.getElementById('minimizeBtn');
+        const maximizeBtn = document.getElementById('maximizeBtn');
+
+        bubbleIcon.addEventListener('click', () => {
+            chatContainer.classList.toggle('visible');
+        });
+
+        minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('visible');
+        });
+
+        maximizeBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('maximized');
+        });
+    </script>
+
+</body>
+
+</html>
