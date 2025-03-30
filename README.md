@@ -1,7 +1,7 @@
 # 🚀 DiabEase  
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=1000&color=00FFFF&width=900&lines=🩺+Personalized+Diabetes+Management+System;🩺+Revolutionizing+Diabetes+Management" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=1000&color=00FFFF&width=900&lines=🩺+Personalized+Diabetes+Management+System;🚀+Revolutionizing+Diabetes+Management" />
 </div>  
 
 ---
@@ -59,3 +59,5 @@ By integrating cutting-edge **AI technology** with **user-friendly healthcare so
 | 🤖 **AI Chatbot (MediBot)** | Provides **instant responses** to diabetes-related queries, enhancing **patient support**. |
 | 🌐 **User-friendly Web Interface** | Built with **HTML, CSS, and JavaScript** for **seamless user interaction**. |
 | 🔒 **Secure & Scalable** | Flask-based backend ensures **reliability and future expansion**. |  
+
+---
