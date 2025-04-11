@@ -41,7 +41,7 @@ def render_page(page):
 
 # Load environment variables for sensitive information
 account_sid = 'AC1b5e6188bcd73beaec18333df0f4cc1c'
-auth_token = '08871bd76c2c0877ab2954478d308776'
+auth_token = '89a50a391cc3537d38436845a665fed9'
 twilio_phone_number = '+18102020702'
 
 # Nutrition Recommendation Logic
