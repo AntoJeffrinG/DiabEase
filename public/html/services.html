@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/services.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <section class="model">
+        <div class="model-container">
+            <div class="model-box" onclick="window.location.href='diet.html'">
+                <h2>Dietary Suggestion</h2>
+                <p>Get Diatary Suggestion tailored to your blood sugar levels, helping you manage glucose levels and
+                    maintain a balanced diet.</p>
+            </div>
+
+            <div class="model-box" onclick="window.location.href='insulin.html'">
+                <h2>Insulin Suggestion</h2>
+                <p>Get insulin dosage suggestion based on your current blood sugar level, helping you maintain optimal
+                    glucose control and better manage diabetes.</p>
+            </div>
+
+            <div class="model-box" onclick="window.location.href='alert.html'">
+                <h2>Gluco Alert</h2>
+                <p>Get an alert when your blood sugar level falls out of the normal range, ensuring timely action to
+                    maintain your health and well-being!</p>
+            </div>
+
+            <div class="model-box" onclick="window.location.href='graph.html'">
+                <h2>Diab Insights</h2>
+                <p>Access weekly insights, trends, tips, motivation, support, and progress tracking directly from your history for smarter diabetes management</p>
+            </div>
+
+            <div class="model-box" onclick="window.location.href='family.html'">
+                <h2>Connect Togather</h2>
+                <p>Easily manage your family's health data, add or remove members, and track progress in one place for a healthier, more connected life.</p>
+            </div>
+
+            <div class="model-box" onclick="window.location.href='retina.html'">
+                <h2>Retina Predict</h2>
+                <p>AI-powered retinal scans to monitor and predict diabetes risk. Track health data, analyze progress, and make informed decisions—all in one platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+            style="width: 85%; height: 85%; object-fit: contain;"></div>
+    <div id="mediGenieBubble">MediGenie</div>
+
+    <div id="chatContainer">
+        <div class="chat-header">
+            <span>Chat with MediBot</span>
+            <div class="chat-controls">
+                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                        height="20"></button>
+                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                        height="20"></button>
+            </div>
+        </div>
+        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+    </div>
+
+    <script>
+        const bubbleIcon = document.getElementById('chatbotBubble');
+        const chatContainer = document.getElementById('chatContainer');
+        const minimizeBtn = document.getElementById('minimizeBtn');
+        const maximizeBtn = document.getElementById('maximizeBtn');
+
+        bubbleIcon.addEventListener('click', () => {
+            chatContainer.classList.toggle('visible');
+        });
+
+        minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('visible');
+        });
+
+        maximizeBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('maximized');
+        });
+    </script>
+</body>
+
+</html>

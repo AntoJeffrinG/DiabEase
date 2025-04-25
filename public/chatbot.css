@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.bot {
+    background-color: #e0e0e0;
+    color: black;
+    align-self: flex-start;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.loader {
+    height: 20px;
+    width: 50px;
+    border-bottom: 2px solid transparent;
+    background: linear-gradient(90deg, #524656 50%, transparent 0) -25% 100% / 50% 2px repeat-x border-box;
+    animation: l3-0 .75s linear infinite;
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    inset: auto 42.5% 0;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #CF4647;
+    width: 8px;
+    height: 8px;
+    animation: l3-1 .75s cubic-bezier(0, 900, 1, 900) infinite;
+}
+
+
+@keyframes l3-0 {
+    to {
+        background-position: -125% 100%
+    }
+}
+
+@keyframes l3-1 {
+
+    0%,
+    2% {
+        bottom: 0%
+    }
+
+    98%,
+    to {
+        bottom: .1%
+    }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetic Retinopathy Detection</title>
+    <link rel="icon" href="../images/favicon.png" tsype="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('../images/result.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    nav {
+        background: transparent;
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav ul li a:hover {
+        background-color: #623baf;
+        transform: scale(1.1);
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 50px;
+    }
+
+    .content {
+        max-width: 800px;
+        background: rgba(46, 44, 44, 0.2);
+        backdrop-filter: blur(20px);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .content:hover {
+        transform: translateY(-10px);
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: #623baf;
+        margin-bottom: 20px;
+    }
+
+    #video-box {
+        width: 640px;
+        height: 480px;
+        border-radius: 10px;
+        border: 3px solid #623baf;
+        display: none;
+        object-fit: cover;
+    }
+
+    #prediction {
+        margin-top: 15px;
+        font-size: 20px;
+        margin-left: rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #623baf;
+        color: white;
+        font-size: 18px;
+        margin-left: 18rem;
+        margin-top: 50px;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+        background-color: #ff6f61;
+        transform: scale(1.05);
+    }
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/public/html/home.html">Home</a></li>
+            <li><a href="/public/html/services.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="content">
+            <h1>Diabetic Retinopathy Detection</h1>
+            <button id="start-btn" class="button">Start</button>
+            <button id="stop-btn" class="button" style="display: none;">Stop</button>
+            <br><br>
+            <img id="video-box" src="" alt="Camera Feed">
+            <div id="prediction">Prediction: --</div>
+        </div>
+    </section>
+
+    <script>
+        let videoBox = document.getElementById("video-box");
+        let startBtn = document.getElementById("start-btn");
+        let stopBtn = document.getElementById("stop-btn");
+        let predictionDiv = document.getElementById("prediction");
+        let intervalId;
+
+        function updatePrediction() {
+            fetch('/get_prediction')
+                .then(response => response.json())
+                .then(data => {
+                    predictionDiv.innerText = 'Prediction: ' + data.prediction;
+                });
+        }
+
+        startBtn.addEventListener("click", function () {
+            videoBox.src = "/video_feed";
+            videoBox.style.display = "block";
+            startBtn.style.display = "none";
+            stopBtn.style.display = "inline-block";
+            intervalId = setInterval(updatePrediction, 500);
+        });
+
+        stopBtn.addEventListener("click", function () {
+            videoBox.style.display = "none";
+            startBtn.style.display = "inline-block";
+            stopBtn.style.display = "none";
+            clearInterval(intervalId);
+            predictionDiv.innerText = "Prediction: --";
+            fetch('/stop_video_feed')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.status);
+                });
+        });
+    </script>
+</body>
+
+</html>

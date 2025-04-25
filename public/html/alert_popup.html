@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Sugar Alert System</title>
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('../images/alert_popup.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #diet-popup {
+            position: relative;
+            width: 90%;
+            max-width: 650px;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(46, 44, 44, 0.7);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            opacity: 0;
+            transition: transform 0.3s ease;
+        }
+
+
+        #diet-popup::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        #diet-popup::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        #diet-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s;
+            pointer-events: none; 
+        }
+
+        #overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        h1 {
+            color: #623baf;
+            font-size: 32px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #d4d4d4;
+        }
+
+        input,
+        select {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            border: 1px solid #a991d8;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+
+
+        select option {
+            background-color: white;
+            color: #1f1f1f;
+        }
+
+        input[type="number"] {
+            appearance: textfield;
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+
+        .button {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #623baf, #8b5cf6);
+            color: white;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background: #ff6f61;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.7);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .btn {
+            display: flex;
+            height: 3em;
+            width: 120px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            margin-left: 16.5rem;
+            background: linear-gradient(135deg, #623baf, #8b5cf6);
+            border-radius: 8px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn>svg {
+            margin-right: 8px;
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+            fill: white;
+        }
+
+        .btn:hover>svg {
+            font-size: 1.3em;
+            transform: translateX(-5px);
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.7);
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #7144c9, #9c6aff);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        #chatbotBubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #7448a2;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #chatbotBubble:hover {
+            transform: scale(1.1);
+        }
+
+        #mediGenieBubble {
+            position: fixed;
+            bottom: 25px;
+            right: 80px;
+            background-color: #7448a2;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: popIn 0.5s ease-out forwards;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px) scale(0.9);
+            }
+
+            60% {
+                opacity: 0.8;
+                transform: translateX(-5px) scale(1.02);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        #chatContainer {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 400px;
+            height: 550px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+
+
+        #chatContainer.visible {
+            display: flex;
+        }
+
+        #chatContainer.maximized {
+            width: 90vw;
+            height: 90vh;
+            bottom: 5vh;
+            right: 5vw;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #7448a2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .chat-controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .chat-frame {
+            flex: 1;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="overlay"></div>
+    <div id="diet-popup">
+        <h1>Blood Sugar Alert System</h1>
+        <form action="/send_alert" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number"
+                    maxlength="10" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="low_range">Low Blood Sugar Range:</label>
+                <select id="low_range" name="low_range" required>
+                    <option value="" disabled selected>Select Low Range</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="high_range">High Blood Sugar Range:</label>
+                <select id="high_range" name="high_range" required>
+                    <option value="" disabled selected>Select High Range</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="current_sugar_level">Current Blood Sugar Level:</label>
+                <input type="number" id="current_sugar_level" name="current_sugar_level"
+                    placeholder="Enter current blood sugar level" required>
+            </div>
+
+            <button type="submit" class="button">Submit</button>
+        </form>
+
+        <button onclick="goBack()" class="btn">
+            <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 
+                188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 
+                5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 
+                0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 
+                20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 
+                604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
+            </svg>
+            <span>Back</span>
+        </button>
+    </div>
+
+    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+            style="width: 85%; height: 85%; object-fit: contain;"></div>
+    <div id="mediGenieBubble">MediGenie</div>
+
+    <div id="chatContainer">
+        <div class="chat-header">
+            <span>Chat with MediBot</span>
+            <div class="chat-controls">
+                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                        height="20"></button>
+                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                        height="20"></button>
+            </div>
+        </div>
+        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("diet-popup").classList.add("show");
+            document.getElementById("overlay").classList.add("show");
+        };
+
+        function goBack() {
+            window.location.href = "alert.html";
+        }
+
+        const bubbleIcon = document.getElementById('chatbotBubble');
+        const chatContainer = document.getElementById('chatContainer');
+        const minimizeBtn = document.getElementById('minimizeBtn');
+        const maximizeBtn = document.getElementById('maximizeBtn');
+
+        bubbleIcon.addEventListener('click', () => {
+            chatContainer.classList.toggle('visible');
+        });
+
+        minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('visible');
+        });
+
+        maximizeBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('maximized');
+        });
+    </script>
+</body>
+
+</html>

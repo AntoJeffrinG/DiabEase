@@ -1,0 +1,19 @@
+Interval (mg/dL),Nutrition Type,Daily Carbohydrates (g),Daily Calories (kcal),Food Items,Carbohydrates per serving (g),Calories per serving (kcal)
+40-70,Vegan,50-150,1500-1800,"Orange juice, Dates, Banana, Ragi Malt, Idiyappam, Coconut Chutney, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",25,110
+40-70,Non-Vegan,50-150,1500-1800,"Honey, Low-fat yogurt, Tuna, Egg Dosa, Mutton Soup, Fish Curry, Egg curry, Chicken Chettinad, Fish curry",18,70
+71-100,Vegan,150-200,1800-2200,"Oatmeal, Brown rice, Sweet potato, Idli, Dosa, Upma, Pongal, Sambar, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",28,130
+71-100,Non-Vegan,150-200,1800-2200,"Greek yogurt, Chicken breast, Beef stew, Chicken Chettinad, Prawn Masala, Fish Fry, Egg curry, Chicken Chettinad, Fish curry",22,120
+101-140,Vegan,130-180,2000-2400,"Mixed nuts, Tofu, Spinach, Vegetable Kurma, Rasam, Lemon Rice, Avial, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",5,30
+101-140,Non-Vegan,130-180,2000-2400,"Chicken breast, Tuna steak, Roast chicken, Egg Curry, Pepper Chicken, Crab Masala, Egg curry, Chicken Chettinad, Fish curry",0,150
+141-170,Vegan,120-150,1800-2200,"Cucumber, Zucchini, Green beans, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",4,45
+141-170,Non-Vegan,120-150,1800-2200,"Grilled chicken, Lean beef, Cottage cheese, Egg curry, Chicken Chettinad, Fish curry",0,160
+171-200,Vegan,120-150,1600-2000,"Brussels sprouts, Artichokes, Mushrooms, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",6,60
+171-200,Non-Vegan,120-150,1600-2000,"Turkey slices, Lamb chops, Pork loin, Egg curry, Chicken Chettinad, Fish curry",2,100
+201-250,Vegan,100-130,1600-2000,"Spinach salad, Mixed nuts, Olive oil, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",7,100
+201-250,Non-Vegan,100-130,1600-2000,"Turkey slices, Lean beef, Grilled shrimp, Egg curry, Chicken Chettinad, Fish curry",2,120
+251-300,Vegan,100-130,1600-2000,"Zucchini noodles, Green salad, Stir-fried tofu, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",0,25
+251-300,Non-Vegan,100-130,1600-2000,"Grilled shrimp, Chicken broth, Boiled eggs, Egg curry, Chicken Chettinad, Fish curry",0,10
+301-400,Vegan,100-130,1600-2000,"Celery sticks, Lettuce wraps, Almonds, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",2,25
+301-400,Non-Vegan,100-130,1600-2000,"Beef steak, Turkey burger, Boiled eggs, Egg curry, Chicken Chettinad, Fish curry",0,80
+401-600,Vegan,100-130,1600-2000,"Steamed vegetables, Mixed nuts, Olive oil, Pongal, Upma, Pesarattu, Avial, Sambar, Rasam, Curd rice",7,25
+401-600,Non-Vegan,100-130,1600-2000,"Steamed fish, Grilled chicken breast, Low-fat yogurt, Egg curry, Chicken Chettinad, Fish curry",2,80

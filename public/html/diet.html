@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dietary Suggestion</title>
+    <link rel="icon" href="../images/favicon.png" tsype="image/png">
+    <link rel="stylesheet" href="../css/diet.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <button id="show-diet" class="btn" onclick="window.location.href='diet_popup.html'">Get Nutrition Advice</button>
+
+    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+            style="width: 85%; height: 85%; object-fit: contain;"></div>
+    <div id="mediGenieBubble">MediGenie</div>
+
+    <div id="chatContainer">
+        <div class="chat-header">
+            <span>Chat with MediBot</span>
+            <div class="chat-controls">
+                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                        height="20"></button>
+                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                        height="20"></button>
+            </div>
+        </div>
+        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+    </div>
+
+    <script>
+        const bubbleIcon = document.getElementById('chatbotBubble');
+        const chatContainer = document.getElementById('chatContainer');
+        const minimizeBtn = document.getElementById('minimizeBtn');
+        const maximizeBtn = document.getElementById('maximizeBtn');
+
+        bubbleIcon.addEventListener('click', () => {
+            chatContainer.classList.toggle('visible');
+        });
+
+        minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('visible');
+        });
+
+        maximizeBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('maximized');
+        });
+    </script>
+</body>
+
+</html>

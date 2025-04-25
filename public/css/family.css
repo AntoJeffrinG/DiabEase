@@ -1,0 +1,317 @@
+/* Full-Screen Community Message Board */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url('../images/result.png') no-repeat center center/cover;
+    text-align: center;
+}
+
+nav {
+    background: transparent;
+    padding: 15px 0;
+    box-shadow: none;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #623baf;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    width: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+
+h1 {
+    color: #623baf;
+    margin-bottom: 15px;
+}
+
+.family-selector,
+.data-display,
+.add-member {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    text-align: center;
+}
+
+.family-selector label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+/* Glassmorphic Dropdown */
+.family-selector select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect */
+    backdrop-filter: blur(10px);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+/* Dropdown Hover & Focus */
+.family-selector select:hover,
+.family-selector select:focus {
+    border-color: #FF9800;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Dropdown Options */
+.family-selector select option {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    padding: 10px;
+}
+
+/* Glassmorphic Input Fields */
+.add-member input {
+    margin: 5px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.add-member input::placeholder {
+    color: #ddd;
+}
+
+/* Glassmorphic Button */
+.add-member button {
+    background: rgba(255, 255, 255, 0.2);
+    color: #623baf;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.add-member button:hover {
+    background-color: #ff6f61;
+    color: white;
+}
+
+select, input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    background: #ffffff;
+    transition: 0.3s ease;
+}
+
+select:hover, input:hover {
+    border-color: #0056b3;
+}
+
+.data-display {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+p {
+    font-size: 18px;
+    color: rgb(11, 10, 10);
+    margin: 5px 0;
+}
+
+.add-member input {
+    margin: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#chatbotBubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #7448a2;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+#chatbotBubble:hover {
+    transform: scale(1.1);
+}
+
+#mediGenieBubble {
+    position: fixed;
+    bottom: 25px;
+    right: 80px;
+    background-color: #7448a2;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: popIn 0.5s ease-out forwards;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.9);
+    }
+
+    60% {
+        opacity: 0.8;
+        transform: translateX(-5px) scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+#chatContainer {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 400px;
+    height: 550px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+
+#chatContainer.visible {
+    display: flex;
+}
+
+#chatContainer.maximized {
+    width: 90vw;
+    height: 90vh;
+    bottom: 5vh;
+    right: 5vw;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #7448a2;
+    color: white;
+    font-weight: bold;
+}
+
+.chat-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.chat-frame {
+    flex: 1;
+    border: none;
+}
+
