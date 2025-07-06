@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Pack - Diabetes Tracker</title>
-    <link rel="icon" href="../images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="../css/family.css">
+    <link rel="icon" href="../../static/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../../static/css/family.css">
 </head>
 
 <body>
     <nav>
         <ul>
-            <li><a href="/public/html/home.html">Home</a></li>
-            <li><a href="/public/html/services.html">Services</a></li>
+            <li><a href="../html/home.html">Home</a></li>
+            <li><a href="../html/services.html">Services</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+    <div id="chatbotBubble"><img src="../../static/images/chat.png" alt="Chatbot"
             style="width: 85%; height: 85%; object-fit: contain;"></div>
     <div id="mediGenieBubble">MediGenie</div>
 
@@ -52,16 +52,15 @@
         <div class="chat-header">
             <span>Chat with MediBot</span>
             <div class="chat-controls">
-                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                <button id="maximizeBtn"><img src="../../static/images/max.png" alt="Maximize" width="20"
                         height="20"></button>
-                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                <button id="minimizeBtn"><img src="../../static/images/mini.png" alt="Minimize" width="20"
                         height="20"></button>
             </div>
         </div>
-        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+        <iframe src="../html/chatbot.html" class="chat-frame"></iframe>
     </div>
 
-    <script src="../js/family.js"></script>
     <script>
         const familyData = {
             "Alice": { bloodSugar: 150, insulin: 25, exercise: 30, food: 45 },
@@ -69,7 +68,6 @@
             "Charlie": { bloodSugar: 180, insulin: 30, exercise: 20, food: 60 }
         };
 
-        // Update displayed data when a family member is selected
         function updateData() {
             let selectedMember = document.getElementById("familyMembers").value;
             let data = familyData[selectedMember];
@@ -81,7 +79,6 @@
             document.getElementById("food").innerText = data.food;
         }
 
-        // Add a new family member
         function addFamilyMember() {
             let name = document.getElementById("newMemberName").value.trim();
             let role = document.getElementById("newMemberRole").value.trim();
@@ -110,7 +107,6 @@
             document.getElementById("newMemberRole").value = "";
         }
 
-        // Custom alert function
         function showAlert(message, type = "success") {
             const alertBox = document.createElement("div");
             alertBox.className = `alert ${type} show`;
@@ -129,7 +125,6 @@
             }, 4000);
         }
 
-        // Chatbot Toggle
         const bubbleIcon = document.getElementById('chatbotBubble');
         const chatContainer = document.getElementById('chatContainer');
         const minimizeBtn = document.getElementById('minimizeBtn');
@@ -147,7 +142,6 @@
             chatContainer.classList.toggle('maximized');
         });
 
-        // Add styles dynamically using JavaScript
         const styles = `
     .alert {
         position: fixed;

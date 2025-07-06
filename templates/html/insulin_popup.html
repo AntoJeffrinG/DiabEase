@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dietary Suggestion</title>
-    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link rel="icon" href="../../static/images/favicon.png" type="image/png">
+    <title>Insulin Recommendation</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-image: url('../images/diet_popup.png');
+            background-image: url('../../static/images/insulin_popup.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            font-family: Arial, Helvetica, sans-serif;
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
             display: flex;
@@ -22,7 +21,19 @@
             align-items: center;
         }
 
-        #diet-popup {
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s;
+        }
+
+        #insulin-popup {
             position: relative;
             width: 90%;
             max-width: 700px;
@@ -37,24 +48,9 @@
             transition: transform 0.3s ease;
         }
 
-
-        #diet-popup.show {
-            opacity: 1;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            z-index: 1000;
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
-        }
-
+        #insulin-popup.show,
         #overlay.show {
+            display: block;
             opacity: 1;
         }
 
@@ -64,7 +60,7 @@
             font-size: 36px;
         }
 
-        .form-group {
+        .input-group {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -79,12 +75,6 @@
             color: #d4d4d4;
         }
 
-        label[for="nutrition_type"] {
-            position: relative;
-            top: 10px;
-        }
-
-
         input[type="text"] {
             width: 30%;
             padding: 10px;
@@ -93,6 +83,11 @@
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
+        }
+
+        label[for="insulin_type"] {
+            position: relative;
+            top: 10px;
         }
 
         select {
@@ -123,7 +118,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            margin-top: 40px;
+            margin-top: 20px;
             background: linear-gradient(135deg, #623baf, #8b5cf6);
             color: white;
             transition: all 0.3s ease-in-out;
@@ -140,25 +135,13 @@
             transform: scale(0.95);
         }
 
-        @keyframes fadeInButton {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .btn {
             display: flex;
             height: 3em;
             width: 120px;
             align-items: center;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 40px;
             margin-left: 18rem;
             background: linear-gradient(135deg, #623baf, #8b5cf6);
             border-radius: 8px;
@@ -312,21 +295,31 @@
 
 <body>
     <div id="overlay"></div>
-    <div id="diet-popup">
-        <h2>Nutrition Recommendation</h2>
-        <form action="/nutrition" method="post">
-            <label for="blood_sugar">Blood Sugar Level (mg/dL):</label>
-            <input type="text" name="blood_sugar" id="blood_sugar" required autocomplete="off"
-                placeholder="Enter Blood Sugar Level"><br>
 
-            <label for="nutrition_type">Dietary Preference:</label>
-            <select name="nutrition_type" id="nutrition_type" required>
-                <option value="" disabled selected>Select your preference</option>
-                <option value="Vegan">Vegan</option>
-                <option value="Non-vegan">Non-Vegan</option>
-            </select><br>
-
-            <input type="submit" class="button" value="Get Recommendation">
+    <div id="insulin-popup">
+        <h2>Insulin Recommendation</h2>
+        <form action="/insulin" method="post" class="form-style">
+            <div class="input-group">
+                <label for="blood_sugar">Blood Sugar Level (mg/dL):</label>
+                <input type="text" id="blood_sugar" name="blood_sugar" autocomplete="off"
+                    placeholder="Enter Blood Sugar Level">
+            </div>
+            <div class="input-group">
+                <label for="dob">Enter Your Age:</label>
+                <input type="text" id="dob" name="dob" autocomplete="off" placeholder="Enter Your Age">
+            </div>
+            <div class="input-group">
+                <label for="insulin_type">Insulin Type:</label>
+                <select id="insulin_type" name="insulin_type" required>
+                    <option value="" disabled selected>Select Insulin Type</option>
+                    <option value="Rapid-acting">Rapid-acting</option>
+                    <option value="Short-acting">Short-acting</option>
+                    <option value="Intermediate-acting">Intermediate-acting</option>
+                    <option value="Long-acting">Long-acting</option>
+                    <option value="Pre-Mixed">Pre-Mixed</option>
+                </select>
+            </div>
+            <input type="submit" value="Get Dosage" class="button">
         </form>
         <button onclick="goBack()" class="btn">
             <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
@@ -341,7 +334,7 @@
         </button>
     </div>
 
-    <div id="chatbotBubble"><img src="/public/images/chat.png" alt="Chatbot"
+    <div id="chatbotBubble"><img src="../../static/images/chat.png" alt="Chatbot"
             style="width: 85%; height: 85%; object-fit: contain;"></div>
     <div id="mediGenieBubble">MediGenie</div>
 
@@ -349,18 +342,18 @@
         <div class="chat-header">
             <span>Chat with MediBot</span>
             <div class="chat-controls">
-                <button id="maximizeBtn"><img src="/public/images/max.png" alt="Maximize" width="20"
+                <button id="maximizeBtn"><img src="../../static/images/max.png" alt="Maximize" width="20"
                         height="20"></button>
-                <button id="minimizeBtn"><img src="/public/images/mini.png" alt="Minimize" width="20"
+                <button id="minimizeBtn"><img src="../../static/images/mini.png" alt="Minimize" width="20"
                         height="20"></button>
             </div>
         </div>
-        <iframe src="/public/chatbot.html" class="chat-frame"></iframe>
+        <iframe src="chatbot.html" class="chat-frame"></iframe>
     </div>
 
     <script>
         window.onload = function () {
-            let popup = document.getElementById("diet-popup");
+            let popup = document.getElementById("insulin-popup");
             let overlay = document.getElementById("overlay");
 
             popup.style.display = "block";
@@ -371,9 +364,8 @@
                 overlay.classList.add("show");
             }, 10);
         };
-
         function goBack() {
-            window.location.href = "diet.html";
+            window.location.href = "insulin.html";
         }
 
         const bubbleIcon = document.getElementById('chatbotBubble');

@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dietary Suggestion</title>
-    <link rel="icon" href="../images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="../css/result.css">
+    <title>Insulin Recommendation</title>
+    <link rel="icon" href="../../static/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../../static/css/result.css">
+    <style>
+        .advice-text {
+            text-align: center;
+            font-size: 10px;
+            color: #fff;
+            padding-top: 10px;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <section class="nutrition-result-section">
+    <section class="insulin-dosage-result-section">
         <div class="content">
-            <h1>Nutrition Recommendation</h1>
-            {% if result != "No suitable diet found." %}
-            <div class="nutrition-info">
-                <p><strong>Daily Carbohydrates (g):</strong> {{ result["Daily Carbohydrates (g)"] }}</p>
-                <p><strong>Daily Calories (kcal):</strong> {{ result["Daily Calories (kcal)"] }}</p>
-                <p><strong>Suggested Food Items:</strong> {{ result["Suggested Food Items"] }}</p>
-                <p><strong>Carbohydrates per Serving (g):</strong> {{ result["Carbohydrates per Serving (g)"] }}</p>
-                <p><strong>Calories per Serving (kcal):</strong> {{ result["Calories per Serving (kcal)"] }}</p>
-            </div>
-            {% else %}
-            <p>{{ result }}</p>
-            {% endif %}
+            <h1>Insulin Dosage Recommendation</h1>
+            <p class="dosage-result">Suggested Insulin Dosage: <span>{{ result }}</span> units</p>
+            <p></p>
             <button onclick="goBack()">
                 <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
                     <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 
@@ -36,10 +38,13 @@
                 <span>Back</span>
             </button>
         </div>
+
+        <p class="advice-text">It is advisable to consult a healthcare provider or pharmacist before using DiabEase for
+            personalized guidance.</p>
     </section>
     <script>
         function goBack() {
-            window.location.href = "diet.html";
+            window.location.href = "insulin.html";
         }
     </script>
 </body>
