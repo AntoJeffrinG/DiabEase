@@ -12,7 +12,6 @@ import cv2
 import torch
 from PIL import Image
 import torchvision.transforms as transforms
-from waitress import serve
 
 # Flask app initialization
 app = Flask(__name__, template_folder="templates/html", static_folder="static")
@@ -244,4 +243,4 @@ def not_found(e):
 
 # ---------- Run the app ----------
 if __name__ == '__main__':
-    serve(app, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
