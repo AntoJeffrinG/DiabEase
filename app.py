@@ -13,6 +13,8 @@ import torch
 from PIL import Image
 import torchvision.transforms as transforms
 
+PORT = 5000
+
 # Flask app initialization
 app = Flask(__name__, template_folder="templates/html", static_folder="static")
 
@@ -243,4 +245,5 @@ def not_found(e):
 
 # ---------- Run the app ----------
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, host='0.0.0.0', port=PORT)
